@@ -1,0 +1,300 @@
+/*  Main.css
+
+    Standard css page.  Has become too big and unruly.
+    Needs to be broken down into several pages for common
+    css and css specific to the main html pages.
+*/
+.banner{
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 80px;
+    font-family: Tahoma, Geneva, sans-serif;
+}
+
+.offColor{
+	color: rgba(255, 169, 11, 0.9);
+}
+
+.wordDisplayHeading{
+    font-size: 44px;
+
+}
+
+.wordDisplay{
+    font-size: 60px;
+    color: rgba(255, 169, 11, 0.9);
+}
+
+#wordDisplayDiv{
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    border: 2px solid;
+    border-color: white;
+    margin:0 auto;
+    display: inline-block;    
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+#permaLinkHolder{
+    background: rgba(255, 169, 11, 0.9);
+    min-height:50px;
+}
+
+#permalink{
+    width: 60%;
+    margin: 0 auto;
+}
+
+#permalinkAddress{
+    width: 70%;
+}
+.entry{
+    font-family: Georgia, serif;
+    border: 2px solid;
+    padding: 10px 25px 10px 25px;
+}
+
+body{
+	font-family: Georgia, serif;
+	color: rgba(255, 255, 255, 0.6);
+    background-color: #000000;
+}
+
+#input_str{
+	width: 90%;
+	background: rgba(255, 255, 255, 0.6);
+	font-size: 3em;
+	border-left: 1px solid #FFFFFF;
+	border-right: 1px solid #FFFFFF;
+}
+
+.inputError{
+	color: red;
+	font-weight: bold;
+	text-align: center;
+	bottom: 0;
+	font-size: 25px;
+	background-position: 0px 0px;
+    padding-top:50px;
+}
+
+#container{
+	margin-top: 1%;
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-right: 10%;
+	padding-left: 10%;
+	border: solid rgba(255, 255, 255, 0.6);
+}
+
+.definitionTable{
+    padding-left:3%;
+}
+
+.definitionHeading{
+    color: rgba(255, 169, 11, 0.9);
+    padding-left:5em;
+}
+
+.transVerb{
+    color: rgba(255, 169, 11, 0.9);
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;    
+}
+
+.audio{
+    float:right;
+}
+
+.heading{
+    width: 5%;
+    color: rgba(255, 169, 11, 0.9);
+    vertical-align: top;
+}
+
+.subheading{
+    color: rgba(255, 169, 11, 0.9);
+    vertical-align: top;
+}
+
+.details{
+    vertical-align: top;
+}
+
+h1{
+	text-align: center;
+}
+
+#scoresTable{
+	width: 100%;
+}
+
+#wwfScore{
+	text-align: right;
+	
+}
+
+.wwfScore{
+    padding-right: 100px;
+}
+
+#scrabbleScore{
+	text-align: left;
+}
+
+.scrabbleScore{   
+    padding-left: 93px;
+}
+
+#DBResult{
+	font-weight: bold;
+	text-align: center;
+	font-size: 40px;
+}
+
+#checkWordBtn{
+	display: none;
+}
+
+.divDBResult{
+	position: relative;
+	padding: 3% 3%;
+}
+
+#divCenter{
+    text-align: center;
+}
+
+#wwfLabel{
+	text-align: center;
+}
+
+.scoresTable{
+	font-size: 35px;
+}
+
+#wwfScoreSpan{
+	float: right;
+}
+
+#scrabbleLabel{
+	position: absolute;
+	vertical-align: bottom;
+}
+
+#labelRow{
+	vertical-align: bottom;
+	text-align: "bottom";
+}
+
+.button{
+    margin-left: 1.5%;
+	display: inline-block;
+	position: absolute;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px / 100% Arial, Helvetica, sans-serif;
+	padding: 0.5em 2em 3em;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.button span{
+	top: 20px;
+	position: relative;
+	font-size: 20pt;
+	font-weight: bold;
+}
+
+.button:hover{
+	text-decoration: none;
+}
+
+.button:active{
+	position: absolute;
+}
+
+.orange{
+	color: #FEF4E9;
+	border: 1px solid #DA7C0C;
+	background: #F78D1D;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top, #faa51a, #f47a20);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+    z-index:4;
+}
+
+.orange:hover{
+	background: #F47C20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top, #f88e11, #f06015);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+
+.orange:active{
+	color: #FCD3A5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+	background: -moz-linear-gradient(top, #f47a20, #faa51a);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+/* This button was generated using CSSButtonGenerator.com */
+#permaButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
+	background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
+	background-color:#ffc477;
+	-webkit-border-top-left-radius:12px;
+	-moz-border-radius-topleft:12px;
+	border-top-left-radius:12px;
+	-webkit-border-top-right-radius:12px;
+	-moz-border-radius-topright:12px;
+	border-top-right-radius:12px;
+	-webkit-border-bottom-right-radius:12px;
+	-moz-border-radius-bottomright:12px;
+	border-bottom-right-radius:12px;
+	-webkit-border-bottom-left-radius:12px;
+	-moz-border-radius-bottomleft:12px;
+	border-bottom-left-radius:12px;
+	text-indent:0px;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:28px;
+	line-height:28px;
+	width:50px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #cc9f52;
+}
+
+#permaButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
+	background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
+	background-color:#fb9e25;
+}
+
+#permaButton:active {
+	position:relative;
+	top:1px;
+}

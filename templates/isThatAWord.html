@@ -1,0 +1,183 @@
+{#-isThatAWord.html
+    
+    Homepage
+-#}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Is that A Word? </title>
+        {%- if use_css -%}  {#- Cute little function to show what the page looks like without css -#}
+            <link rel="stylesheet" type="text/css" href= "/stylesheets/main.css">
+        {%- endif -%}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/color/jquery.color-2.1.2.js"></script>        
+        <script type="text/javascript" src="/javascript/tools.js"></script>        
+        <script type="text/javascript" >
+            
+            $( document ).ready(function() {
+                showPermalink(false)
+                updateScores($("#input_str").val());
+                //Check to see if the page has updated since the last visit
+                handleVersion( {{ is_up_to_date }} );
+                setDefinitions($("#divDefinitions"),"",false); //make sure definitions are empty
+            });
+            
+            //Handles submit action
+            function submitHandler(){
+                //valid[0] is validity valid[1] is either the word formatted nicely or error text
+                var valid = validateWord($('#input_str'));
+                
+                if(valid[0]){//if it's a valid word
+                    $("#inputError").text("");
+                    if(dataIsCached(valid[1])){ // if it's a valid word and the data is cached
+                        if(localStorage.getItem(valid[1]) == " "){//if the word is valid & cached, but it isn't in the Scrabble word list
+                            $('#DBResult').text("In Scrabble and Words with Friends, ".concat(valid[1].concat(" is not a word!")));
+                            setBackground(failColor,defaultInterval);
+                            setDefinitions($("#divDefinitions"),"",true)
+                        } else { //if the data is cached and is in the dictionary
+                            $('#DBResult').text(valid[1].concat(" is a word!"));
+                            setBackground(successColor,defaultInterval);
+                            showPermalink(true, localStorage.getItem(valid[1].concat("_permalink")));
+                            setDefinitions($("#divDefinitions"),localStorage.getItem(valid[1]), true)
+                        }                        
+                    } else { //if the word is valid and is not cached
+                        $("#inputError").text("");
+                        processWord(valid[1]);                    
+                    }
+                } else { //if it's not a valid word
+                    setBackground(defaultColor,defaultInterval);
+                    showPermalink(false);
+                    $('#DBResult').text("");
+                    $("#inputError").text(valid[1]);
+                    setDefinitions($("#divDefinitions"),"", false)
+                }
+            }
+        
+            //Does initial processing for word
+            function processWord(input){ 
+                $.ajax({
+                    type: 'GET',
+                    url: '/findword',
+                    data: {input_str: input },
+                    success: function(data){                        
+                        if(data["found"]){
+                            getAndSetDefinitions(input, data['word_id']); //IMMEDIATELY start working on getting the definitions
+                            $('#DBResult').text(input.concat(" is a word!"));
+                            setBackground(successColor,defaultInterval);
+                            showPermalink(true,"http://www.isthataword.net/direct/".concat(data['word_id']))
+                        } else {
+                            $('#DBResult').text("In Scrabble and Words with Friends, ".concat(input.concat(" is not a word!")));
+                            setDefinitions($("#divDefinitions"),"",false)
+                            showPermalink(false)
+                            setBackground(failColor,defaultInterval);
+                            cacheHandler(input,""," ");
+                        }
+                        
+                    },
+                    dataType: 'json'
+                });
+            }
+                  
+            //Gets the definition for a given word
+            function getAndSetDefinitions(input, wordId){   
+                $.ajax({
+                    type: 'GET',
+                    url: '/define',
+                    data: {input_str: input },
+                    success: function(data){                       
+                        if(data == ""){
+                            data = "<div class='inputError'>While ".concat(input).concat(" is a word, we don't have a definition for it at this time!</div>");
+                        } 
+                        cacheHandler(input, wordId, data);
+                        setDefinitions($("#divDefinitions"), data, true)
+                    },
+                    dataType: 'html'
+                });
+            }            
+          
+            /**
+             * Shows or hides the permalink text
+             *
+             * shouldShow - states whether the permalink should be shown or not
+             * address - the new html address for the permalink page
+             **/
+            function showPermalink(shouldShow, address){
+                if(shouldShow){
+                    $("#permalinkAddress").val(address);
+                    $("#permaButton").attr("href",address)
+                    $("#permalink").show()
+                } else {
+                    $("#permalink").hide();
+                    $("#permaButton").attr("href","")
+                    $("#permalinkAddress").val("");
+                }
+            }
+            
+            //update Scrabble and WWF scores
+            function updateScores(word){
+                $("#scrabbleScore").text(getScore(word, scrabbleKey));
+                $("#wwfScore").text(getScore(word, wwfKey));
+            }            
+            
+        </script>
+    </head>
+    
+    <body>
+        <div id="container">
+            <div id="divHeading">
+                <h1>
+                    <a href="/" id="banner" class="banner" >Is that <span class="offColor">a</span> Word?</a>
+                </h1>
+            </div>
+            <div id="divSearch">
+                <form onsubmit="submitHandler();return false;">
+                    <input id="input_str" type="text" onkeyup="updateScores(this.value.trim());" value="{{input_str}}" /> 
+                    
+                    <input id="checkWordBtn" type="submit" onclick="submitHandler();return false;"/> <!-- hidden -->
+                    
+                    <a  id="checkWordsBtn" onclick="submitHandler();return false;" value="Go" class="button orange"><span>GO</span></a>
+                </form>
+            </div>
+            
+            <div id="divCenter">
+                <br />
+                <div id="permalink">
+                    <label>Direct Link
+                        <div class="permaLinkHolder">
+                            <input type="text" id="permalinkAddress" /> <a href="#" id="permaButton">GO</a>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+
+            <div id="divDBResult" class="divDBResult">
+                <p id="inputError" class="inputError"></p>
+                <p id="DBResult"></p>
+            </div> 
+            
+
+            <div id="scores">
+                <table id="scoresTable" class="scoresTable">
+                    <tr id="labelRow">
+                        <td id="ScrabbleLabel"><br />Scrabble Score</td>
+                        <td></td>
+                        <td id="wwfLabel"><span id="wwfScoreSpan">Words With <br /> Friends Score</span></td>
+                    </tr>
+                    <tr>
+                        <td id="scrabbleScore" class="scrabbleScore">0</td>
+                        <td></td>
+                        <td id="wwfScore" class="wwfScore">0</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="divDefinitions" >
+            
+            </div><br />
+        </div>
+        
+    </body>
+    
+</html>

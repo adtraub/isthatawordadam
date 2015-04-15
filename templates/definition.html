@@ -1,0 +1,68 @@
+{#-
+definition.html
+
+This stunning display of elegance receives a list of definitions from the
+server and formats it nicely into beautiful code. Comments are minimal
+because the code is undeniably straight forward.
+-#}
+
+{%- for subDic in master -%}
+    <div class="entry">
+        <p><span class="offColor">Word</span>: {{ subDic['id'] }}</p>
+        {%- if "partOfSpeech" in subDic.keys() -%}
+            <label><span class="offColor">Part of Speech</span>: {{ subDic['partOfSpeech'] }}</label>
+        {%- endif -%}
+        {%- if "sound" in subDic.keys() -%}
+            <span class="audio" >
+                <audio id="audio" controls="controls" >
+                    <source id="wavSource" type="audio/wav" src="http://media.merriam-webster.com/soundc11/{{ subDic['sound'] }}" />
+                    Your browser does not support the audio element.
+                </audio>
+            </span>
+        {%- endif -%}        
+        {%- if "pronunciation" in subDic.keys() -%}
+            <p><span class="offColor">Pronunciation</span>:{{ subDic['pronunciation'] }}</p>
+        {%- endif -%} 
+        {%- if "etymology" in subDic.keys() -%}
+            <p><span class="offColor">Etymology</span>: {{ subDic['etymology'] }}</p>
+        {%- endif -%}
+        {%- if "date" in subDic.keys() -%}
+            <p><span class="offColor">First Used</span>: {{ subDic['date'] }}</p>
+        {%- endif -%}
+        {%- if "definitions" in subDic.keys() -%}
+            <p><span{#- This outer span just adds a space after the colon -#}><span class="offColor">Definition</span>: </span>
+            {%- if subDic["definitions"]|length > 1 -%} 
+                {#- if it's multiline -#}
+                </p>
+                <table class="definitionTable">
+                {%- for def in  subDic["definitions"] -%}         
+                    <tr>
+                        <td class="heading">{{ def.heading }}</td>
+                        <td class="details"><span class="subheading">{{ def.subheading }} </span> 
+                            {%- for detail in def.details -%}
+                                {%- if detail.effect == "s" -%}
+                                    <span class="subheading">{{ detail.text }}</span>
+                                {%- elif detail.effect == "i" -%}
+                                    <em>{{ detail.text }}</em>
+                                {%- elif detail.effect == "vt" -%}
+                                    <div class="transVerb">{{ detail.text }}</div>
+                                {%- else -%}
+                                    {{ detail.text }}
+                                {%- endif -%}
+                            {%- endfor -%}            
+                        </td>
+                    </tr>
+                {%- endfor -%}            
+                 </table>
+            {%- else -%}
+                {#- if it's a single line definition -#}
+                {%- for def in subDic["definitions"] -%}
+                    {%- for detail in def.details -%}
+                        {{ detail.text }}
+                    {%- endfor -%}  
+                {%- endfor -%}  
+                </p>
+            {%- endif -%}            
+        {%- endif -%}
+    </div>
+{%- endfor -%}
