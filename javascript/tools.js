@@ -10,6 +10,10 @@ Access an html element directly, pass in the tag object as a parameter.
 True = true
 False = false
 
+ERROR_BLANK = "ERROR_BLANK";
+ERROR_BAD_CHARS = "ERROR_BAD_CHARS";
+ERROR_TOO_SHORT = "ERROR_TOO_SHORT";
+
 //scrabble scores dictionary
 scrabbleKey = {
                 "a":1,
@@ -133,9 +137,11 @@ function validateWord(input){
     var input = input.val().trim().toLowerCase();//cleans the input by making it lowercase and removing excess whitespace
     var retVal;
     if(input.length == 0){//if blank or only whitespace
-        retVal = [false,"You need to type in something!"];
+        retVal = [false, ERROR_BLANK];
+    } else if( input.length == 1 ) {
+        retVal = [false, ERROR_TOO_SHORT];
     } else if(input.match(inputRegex) == null){//if it has non a-z chars
-        retVal = [false,"Only 1 word at a time, and only letters from A-Z"];
+        retVal = [false,ERROR_BAD_CHARS];
     } else {//if good input
         retVal = [true,input];
     }
