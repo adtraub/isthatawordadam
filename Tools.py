@@ -5,7 +5,7 @@ import os
 import datetime
 import logging as logger
 import urllib2
-from hidden import _dictionaryAPIKey, _dictionaryAPIAddress
+from secret import _dictionaryAPIKey, _dictionaryAPIAddress
 from google.appengine.ext import db
 
 try:
@@ -27,7 +27,7 @@ jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                                autoescape = True)
     
 #MajorRelease.StoriesDelivered.HotfixesDelievered
-version = "5.0.2";
+version = "5.0.5"
     
 def getXML(toDefine):
     """Return an XML tree with all of the information of a word from Websters or None"""
