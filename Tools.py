@@ -5,6 +5,9 @@ import os
 import datetime
 import logging as logger
 import urllib2
+
+from models.Word import Word
+
 from secret import _dictionaryAPIKey, _dictionaryAPIAddress
 from google.appengine.ext import db
 
@@ -55,7 +58,6 @@ def get_expiration(howManyYears=1):
     max_age = howManyYears*365*24*60*60
     return datetime.datetime.strftime(datetime.datetime.utcnow() + datetime.timedelta(seconds=max_age), "%a, %d-%b-%Y %H:%M:%S EST")
     
-        
 def wordExists(word_str):
     """
 Run a query checking for the word in our database
@@ -70,3 +72,8 @@ isn't found.
         word_id = -1
     return exists, word_id
         
+def addSampleData(words):
+    for word in words:
+        Word(word_str = word, in_scrabble=True, in_wwf=True).put()
+    
+    

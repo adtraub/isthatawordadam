@@ -19,7 +19,7 @@ import jinja2
 import webapp2
 import os
 import logging
-logging.info("DOES THIS WORK?!")
+#logging.info("DOES THIS WORK?!")
 
 from models.Word import Word
 
@@ -29,6 +29,7 @@ from views.Direct import DirectLinkHandler, CSSFreeDirectLinkHandler
 from views.WordNotFound import WordNotFoundHandler, CSSFreeWordNotFoundHandler
 from views.Lookup import LookupHandler
 from views.Define import DefineHandler
+#from views.Prime import PrimeHandler #adds a value to the datastore to "prime it for local use
 
 
 app = webapp2.WSGIApplication([
@@ -40,4 +41,5 @@ app = webapp2.WSGIApplication([
     ('/nocss/direct/([0-9]+)',CSSFreeDirectLinkHandler),
     ('/wordnotfound',WordNotFoundHandler),
     ('/nocss/wordnotfound',CSSFreeWordNotFoundHandler),
+    #('/primedatastore',PrimeHandler),
 ], debug=True)
