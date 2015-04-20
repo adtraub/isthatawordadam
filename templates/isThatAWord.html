@@ -13,7 +13,7 @@
     </head>    
     <body>
         <div id="main" class="container-fluid">
-            <div class="row center"> <!-- Heading -->
+            <div class="row centered"> <!-- Heading -->
                 <h1>
                     <a href="/" id="banner" class="banner" >
                         Is that <span class="trim">a</span> Word?
@@ -21,7 +21,7 @@
                 </h1>
             </div>
             
-            <div class="row center"> <!-- Search -->
+            <div class="row centered"> <!-- Search -->
                 <form role="form" onsubmit="submitHandler();return false;">
                     <div class="">
                         <span class="col-xs-9 col-xs-offset-1">
@@ -41,8 +41,8 @@
             </div>
             
             <div class="row"> <!-- Result -->
-                <div id="divDBResult" class="center">
-                    <p id="DBResult"></p>
+                <div id="divDBResult" class="centered">
+                    <p id="dbResult"></p>
                     <p id="errorBlank" class="error" hidden>You need to type in something!</p>
                     <p id="errorBadChars" class="error" hidden>Only 1 word at a time, and only letters from A-Z!</p>
                     <p id="errorTooShort" class="error" hidden>The minimum word length is 2 letters!</p>
@@ -50,7 +50,7 @@
             </div>
             
             <div class="row"> <!-- Scores -->
-                <div id="scores" class="center">
+                <div id="scores" class="centered">
                     <div id="scrabbleDiv">
                         <p>Scrabble Score</p>
                         <p id="scrabbleScore">0<p>
@@ -97,11 +97,11 @@
                     setError(null); //no errors
                     if(dataIsCached(valid[1])){ // if it's a valid word and the data is cached
                         if(localStorage.getItem(valid[1]) == " "){//if the word is valid & cached, but it isn't in the Scrabble word list
-                            $('#DBResult').text("In Scrabble and Words with Friends, ".concat(valid[1].concat(" is not a word!")));
+                            $('#dbResult').text("In Scrabble and Words with Friends, ".concat(valid[1].concat(" is not a word!")));
                             setBackground(failColor,defaultInterval);
                             setDefinitions($("#divDefinitions"),"",true)
                         } else { //if the data is cached and is in the dictionary
-                            $('#DBResult').text(valid[1].concat(" is a word!"));
+                            $('#dbResult').text(valid[1].concat(" is a word!"));
                             setBackground(successColor,defaultInterval);
                             //showPermalink(true, localStorage.getItem(valid[1].concat("_permalink")));
                             setDefinitions($("#divDefinitions"),localStorage.getItem(valid[1]), true)
@@ -113,7 +113,7 @@
                 } else { //if it's not a valid word
                     setBackground(defaultColor,defaultInterval);
                     //showPermalink(false);
-                    $('#DBResult').text("");
+                    $('#dbResult').text("");
                     setError(valid[1]);                    
                     setDefinitions($("#divDefinitions"),"", false)
                 }
@@ -138,11 +138,11 @@
                     success: function(data){                        
                         if(data["found"]){
                             getAndSetDefinitions(input, data['word_id']); //IMMEDIATELY start working on getting the definitions
-                            $('#DBResult').text(input.concat(" is a word!"));
+                            $('#dbResult').text(input.concat(" is a word!"));
                             setBackground(successColor,defaultInterval);
                             //showPermalink(true,"http://www.isthataword.net/direct/".concat(data['word_id']))
                         } else {
-                            $('#DBResult').text("In Scrabble and Words with Friends, ".concat(input.concat(" is not a word!")));
+                            $('#dbResult').text("In Scrabble and Words with Friends, ".concat(input.concat(" is not a word!")));
                             setDefinitions($("#divDefinitions"),"",false)
                             //showPermalink(false)
                             setBackground(failColor,defaultInterval);

@@ -8,32 +8,31 @@ because the code is undeniably straight forward.
 
 {%- for subDic in master -%}
     <div class="entry">
-        <p><span class="offColor">Word</span>: {{ subDic['id'] }}</p>
+        <p><label>Word</label>: {{ subDic['id'] }}</p>
         {%- if "partOfSpeech" in subDic.keys() -%}
-            <label><span class="offColor">Part of Speech</span>: {{ subDic['partOfSpeech'] }}</label>
+            <p><label>Part of Speech</label>: {{ subDic['partOfSpeech'] }}</p>
         {%- endif -%}
         {%- if "sound" in subDic.keys() -%}
             <span class="audio" >
-                <audio id="audio" controls="controls" >
-                    <source id="wavSource" type="audio/wav" src="http://media.merriam-webster.com/soundc11/{{ subDic['sound'] }}" />
+                <audio controls="controls" >
+                    <source type="audio/wav" src="http://media.merriam-webster.com/soundc11/{{ subDic['sound'] }}" />
                     Your browser does not support the audio element.
                 </audio>
             </span>
         {%- endif -%}        
         {%- if "pronunciation" in subDic.keys() -%}
-            <p><span class="offColor">Pronunciation</span>:{{ subDic['pronunciation'] }}</p>
+            <p><label>Pronunciation</label>:{{ subDic['pronunciation'] }}</p>
         {%- endif -%} 
         {%- if "etymology" in subDic.keys() -%}
-            <p><span class="offColor">Etymology</span>: {{ subDic['etymology'] }}</p>
+            <p><label>Etymology</label>: {{ subDic['etymology'] }}</p>
         {%- endif -%}
         {%- if "date" in subDic.keys() -%}
-            <p><span class="offColor">First Used</span>: {{ subDic['date'] }}</p>
+            <p><label>First Used</label>: {{ subDic['date'] }}</p>
         {%- endif -%}
         {%- if "definitions" in subDic.keys() -%}
-            <p><span{#- This outer span just adds a space after the colon -#}><span class="offColor">Definition</span>: </span>
             {%- if subDic["definitions"]|length > 1 -%} 
                 {#- if it's multiline -#}
-                </p>
+                <p><label>Definition</label>:</p>
                 <table class="definitionTable">
                 {%- for def in  subDic["definitions"] -%}         
                     <tr>
@@ -58,10 +57,9 @@ because the code is undeniably straight forward.
                 {#- if it's a single line definition -#}
                 {%- for def in subDic["definitions"] -%}
                     {%- for detail in def.details -%}
-                        {{ detail.text }}
+                        <p><label>Definition</label>: {{ detail.text }}</p>
                     {%- endfor -%}  
                 {%- endfor -%}  
-                </p>
             {%- endif -%}            
         {%- endif -%}
     </div>

@@ -7,7 +7,7 @@ body {
     background-color: #000000;
 }
 
-.center{
+.centered{
      float: none;
      margin-left: auto;  
      margin-right: auto;
@@ -21,15 +21,16 @@ body {
 	border: solid rgba(255, 255, 255, 0.6);
 }
 
+.trim{
+    color: rgba(255, 169, 11, 0.9);
+}
+
 /*Banner */
 .banner, .banner:hover, .banner:active, 
 .banner:focus, .banner:visited{
     text-decoration: none;
     color: rgba(255, 255, 255, 0.6);
     font-family: Tahoma, Geneva, sans-serif;
-    .trim{
-        color: rgba(255, 169, 11, 0.9);
-    }
     @media(max-width: $screen-xs-max){ font-size: 30px; }
     @media(min-width: $screen-sm-min){ font-size: 40px; }  
     @media(min-width: $screen-md-min){ font-size: 60px; }  
@@ -59,4 +60,32 @@ body {
 
 #scrabbleDiv{
     float:left;
+}
+
+/*Definitions*/
+#divDefinitions{
+    font-family: Georgia, serif;
+    .entry{
+        border: 2px solid;
+        padding: 10px 25px 10px 25px;
+    }
+    label{
+        color: rgba(255, 169, 11, 0.9);
+        font-weight: bold;        
+    }
+    .audio{
+        float:right;
+    }    
+    .definitionTable{
+        padding-left:3%;
+        .heading{
+            width: 5%;
+            color: rgba(255, 169, 11, 0.9);
+            vertical-align: top;
+        }
+        .subheading{
+            color: rgba(255, 169, 11, 0.9);
+            vertical-align: top;
+        }
+    }
 }

@@ -5641,7 +5641,7 @@ body {
   color: rgba(255, 255, 255, 0.6);
   background-color: #000000; }
 
-.center {
+.centered {
   float: none;
   margin-left: auto;
   margin-right: auto;
@@ -5653,15 +5653,15 @@ body {
   padding-left: 10%;
   border: solid rgba(255, 255, 255, 0.6); }
 
+.trim {
+  color: rgba(255, 169, 11, 0.9); }
+
 /*Banner */
 .banner, .banner:hover, .banner:active,
 .banner:focus, .banner:visited {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
   font-family: Tahoma, Geneva, sans-serif; }
-  .banner .trim, .banner:hover .trim, .banner:active .trim,
-  .banner:focus .trim, .banner:visited .trim {
-    color: rgba(255, 169, 11, 0.9); }
   @media (max-width: 767px) {
     .banner, .banner:hover, .banner:active,
     .banner:focus, .banner:visited {
@@ -5699,5 +5699,26 @@ body {
 
 #scrabbleDiv {
   float: left; }
+
+/*Definitions*/
+#divDefinitions {
+  font-family: Georgia, serif; }
+  #divDefinitions .entry {
+    border: 2px solid;
+    padding: 10px 25px 10px 25px; }
+  #divDefinitions label {
+    color: rgba(255, 169, 11, 0.9);
+    font-weight: bold; }
+  #divDefinitions .audio {
+    float: right; }
+  #divDefinitions .definitionTable {
+    padding-left: 3%; }
+    #divDefinitions .definitionTable .heading {
+      width: 5%;
+      color: rgba(255, 169, 11, 0.9);
+      vertical-align: top; }
+    #divDefinitions .definitionTable .subheading {
+      color: rgba(255, 169, 11, 0.9);
+      vertical-align: top; }
 
 /*# sourceMappingURL=main.css.map */
