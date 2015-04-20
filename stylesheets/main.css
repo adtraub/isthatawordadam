@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/*  Main.css */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -5713,7 +5712,8 @@ body {
       padding-bottom: 10px;
       display: block; }
   #divDefinitions .audio {
-    float: right; }
+    float: right;
+    /*Only show audio tags if they'll fit on the screen*/ }
     @media (max-width: 540px) {
       #divDefinitions .audio {
         visibility: hidden; } }

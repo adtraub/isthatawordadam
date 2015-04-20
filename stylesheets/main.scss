@@ -1,5 +1,6 @@
-/*  Main.css */
 @import 'bootstrap';
+//variables
+$trim-color: rgba(255, 169, 11, 0.9);
 
 /*General stuff*/
 body {
@@ -22,7 +23,7 @@ body {
 }
 
 .trim{
-    color: rgba(255, 169, 11, 0.9);
+    color: $trim-color;
 }
 
 /*Banner */
@@ -79,6 +80,7 @@ body {
     }
     .audio{
         float:right;
+        /*Only show audio tags if they'll fit on the screen*/
         @media(max-width: 540px){
             visibility: hidden;
         }
@@ -89,7 +91,7 @@ body {
     .definitionTable{
         padding-left:3%;
         .heading{
-            color: rgba(255, 169, 11, 0.9);
+            color: $trim-color;
             vertical-align: top;
             &.primary{
                 width: 5%;
