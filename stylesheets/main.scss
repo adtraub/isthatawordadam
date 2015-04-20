@@ -14,9 +14,18 @@ body {
      text-align: center;
 }
 
+/*main container*/
+
+#main{
+	margin-top: 1%;
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-right: 10%;
+	padding-left: 10%;
+	border: solid rgba(255, 255, 255, 0.6);
+}
+
 /*Banner */
-
-
 .banner, .banner:hover, .banner:active{
     text-decoration: none;
     color: rgba(255, 255, 255, 0.6);
