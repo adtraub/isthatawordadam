@@ -5707,18 +5707,25 @@ body {
     border: 2px solid;
     padding: 10px 25px 10px 25px; }
   #divDefinitions label {
-    color: rgba(255, 169, 11, 0.9);
-    font-weight: bold; }
+    color: rgba(255, 169, 11, 0.9); }
+    #divDefinitions label.transVerb {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: block; }
   #divDefinitions .audio {
     float: right; }
+    @media (max-width: 540px) {
+      #divDefinitions .audio {
+        visibility: hidden; } }
+    @media (min-width: 540px) {
+      #divDefinitions .audio {
+        visibility: visible; } }
   #divDefinitions .definitionTable {
     padding-left: 3%; }
     #divDefinitions .definitionTable .heading {
-      width: 5%;
       color: rgba(255, 169, 11, 0.9);
       vertical-align: top; }
-    #divDefinitions .definitionTable .subheading {
-      color: rgba(255, 169, 11, 0.9);
-      vertical-align: top; }
+      #divDefinitions .definitionTable .heading.primary {
+        width: 5%; }
 
 /*# sourceMappingURL=main.css.map */

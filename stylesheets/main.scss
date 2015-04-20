@@ -71,21 +71,29 @@ body {
     }
     label{
         color: rgba(255, 169, 11, 0.9);
-        font-weight: bold;        
+        &.transVerb{
+            padding-top: 10px;
+            padding-bottom: 10px;    
+            display: block;
+        }
     }
     .audio{
         float:right;
+        @media(max-width: 540px){
+            visibility: hidden;
+        }
+        @media(min-width: 540px){
+            visibility: visible;
+        }
     }    
     .definitionTable{
         padding-left:3%;
         .heading{
-            width: 5%;
             color: rgba(255, 169, 11, 0.9);
             vertical-align: top;
-        }
-        .subheading{
-            color: rgba(255, 169, 11, 0.9);
-            vertical-align: top;
+            &.primary{
+                width: 5%;
+            }
         }
     }
 }

@@ -36,15 +36,15 @@ because the code is undeniably straight forward.
                 <table class="definitionTable">
                 {%- for def in  subDic["definitions"] -%}         
                     <tr>
-                        <td class="heading">{{ def.heading }}</td>
-                        <td class="details"><span class="subheading">{{ def.subheading }} </span> 
+                        <td class="heading primary">{{ def.heading }}</td>
+                        <td class="details"><span class="heading">{{ def.subheading }} </span> 
                             {%- for detail in def.details -%}
                                 {%- if detail.effect == "s" -%}
-                                    <span class="subheading">{{ detail.text }}</span>
+                                    <span class="heading">{{ detail.text }}</span>
                                 {%- elif detail.effect == "i" -%}
                                     <em>{{ detail.text }}</em>
                                 {%- elif detail.effect == "vt" -%}
-                                    <div class="transVerb">{{ detail.text }}</div>
+                                    <label class="transVerb">{{ detail.text }}</label>
                                 {%- else -%}
                                     {{ detail.text }}
                                 {%- endif -%}
