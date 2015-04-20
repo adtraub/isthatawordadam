@@ -5654,31 +5654,36 @@ body {
   border: solid rgba(255, 255, 255, 0.6); }
 
 /*Banner */
-.banner, .banner:hover, .banner:active {
+.banner, .banner:hover, .banner:active,
+.banner:focus, .banner:visited {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
   font-family: Tahoma, Geneva, sans-serif; }
-  .banner .trim, .banner:hover .trim, .banner:active .trim {
+  .banner .trim, .banner:hover .trim, .banner:active .trim,
+  .banner:focus .trim, .banner:visited .trim {
     color: rgba(255, 169, 11, 0.9); }
-  .banner:hover, .banner:hover:hover, .banner:active:hover {
-    text-decoration: none; }
   @media (max-width: 767px) {
-    .banner, .banner:hover, .banner:active {
+    .banner, .banner:hover, .banner:active,
+    .banner:focus, .banner:visited {
       font-size: 30px; } }
   @media (min-width: 768px) {
-    .banner, .banner:hover, .banner:active {
+    .banner, .banner:hover, .banner:active,
+    .banner:focus, .banner:visited {
       font-size: 40px; } }
   @media (min-width: 992px) {
-    .banner, .banner:hover, .banner:active {
+    .banner, .banner:hover, .banner:active,
+    .banner:focus, .banner:visited {
       font-size: 60px; } }
   @media (min-width: 1200px) {
-    .banner, .banner:hover, .banner:active {
+    .banner, .banner:hover, .banner:active,
+    .banner:focus, .banner:visited {
       font-size: 80px; } }
 
 /*Input*/
 .btn:focus, .btn:active:focus, .btn.active:focus,
 .btn.focus, .btn:active.focus, .btn.active.focus {
-  outline: none; }
+  outline: none;
+  /*Removes the button outline in chrome/safari*/ }
 
 .btn-warning.raised {
   box-shadow: 0 3px 0 0 #b87430; }
@@ -5687,5 +5692,12 @@ body {
     box-shadow: none;
     margin-bottom: -3px;
     margin-top: 3px; }
+
+/*Scores*/
+#wwfDiv {
+  float: right; }
+
+#scrabbleDiv {
+  float: left; }
 
 /*# sourceMappingURL=main.css.map */

@@ -22,15 +22,13 @@ body {
 }
 
 /*Banner */
-.banner, .banner:hover, .banner:active{
+.banner, .banner:hover, .banner:active, 
+.banner:focus, .banner:visited{
     text-decoration: none;
     color: rgba(255, 255, 255, 0.6);
     font-family: Tahoma, Geneva, sans-serif;
     .trim{
         color: rgba(255, 169, 11, 0.9);
-    }
-    &:hover{
-        text-decoration: none;
     }
     @media(max-width: $screen-xs-max){ font-size: 30px; }
     @media(min-width: $screen-sm-min){ font-size: 40px; }  
@@ -39,10 +37,9 @@ body {
 }
 
 /*Input*/
-//remove the outline in chrome
-.btn:focus,.btn:active:focus,.btn.active:focus,
-.btn.focus,.btn:active.focus,.btn.active.focus {
-    outline: none;
+.btn:focus, .btn:active:focus, .btn.active:focus,
+.btn.focus, .btn:active.focus, .btn.active.focus {
+    outline: none; /*Removes the button outline in chrome/safari*/
 }
 
 .btn-warning.raised {
@@ -53,4 +50,13 @@ body {
         margin-bottom: -3px;
         margin-top: 3px;    
     }
+}
+
+/*Scores*/
+#wwfDiv{
+    float:right;
+}
+
+#scrabbleDiv{
+    float:left;
 }
