@@ -14,13 +14,8 @@
     </head>    
     <body>
         <div id="main" class="container-fluid">
-            <div class="row centered"> <!-- Heading -->
-                <h1>
-                    <a href="/" id="banner" class="banner" >
-                        Is that <span class="trim">a</span> Word?
-                    </a>
-                </h1>
-            </div>
+            
+            {%- include 'banner.html' -%}
             
             <div class="row"> <!-- Search -->
                 <form role="form" onsubmit="submitHandler();return false;">
@@ -78,18 +73,18 @@
         <script type="text/javascript" src="/javascript/tools.js"></script>    
         <script type="text/javascript" >
             
-            var errorDict = {
-                ERROR_BLANK: $("#errorBlank"),
-                ERROR_BAD_CHARS: $("#errorBadChars"),
-                ERROR_TOO_SHORT: $("#errorTooShort"),
-            };
-            
             $( document ).ready(function() {
                 updateScores("{{ input_str }}", $("#scrabbleScore"), $("#wwfScore"));
                 //Check to see if the page has updated since the last visit
                 handleVersion( {{ is_up_to_date }} );
                 setDefinitions($("#divDefinitions"),"",false); //make sure definitions are empty
             });
+            
+            var errorDict = {
+                ERROR_BLANK: $("#errorBlank"),
+                ERROR_BAD_CHARS: $("#errorBadChars"),
+                ERROR_TOO_SHORT: $("#errorTooShort"),
+            };
             
             /**
              * Shows or hides the permalink text

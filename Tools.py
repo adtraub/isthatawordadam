@@ -30,7 +30,7 @@ jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                                autoescape = True)
     
 #MajorRelease.StoriesDelivered.HotfixesDelievered
-version = "5.0.5"
+version = "5.1.0"
     
 def getXML(toDefine):
     """Return an XML tree with all of the information of a word from Websters or None"""

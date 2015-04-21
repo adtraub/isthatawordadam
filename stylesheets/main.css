@@ -5814,4 +5814,16 @@ body {
       #divDefinitions .definitionTable .heading.primary {
         width: 5%; }
 
+/*direct page*/
+#wordDisplayDiv {
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: 2px solid;
+  border-color: white;
+  margin: 0 auto;
+  display: inline-block;
+  padding-right: 30px;
+  padding-left: 30px; }
+
 /*# sourceMappingURL=main.css.map */

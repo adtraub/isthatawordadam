@@ -7,50 +7,42 @@
         <title>Is {{ input_str|title }} A Word?</title>
         {%- if use_css -%} {#- Cute little function to show what the page looks like without css -#}
             <link rel="stylesheet" type="text/css" href= "/stylesheets/main.css">
+            <link href='http://fonts.googleapis.com/css?family=Nunito:700' rel='stylesheet' type='text/css'>
         {%- endif -%}
     </head>
     
-    <body class="success">
-        <div id="container">
-            <div id="divHeading">
-                <h1>
-                    <a href="/" id="banner" class="banner" >Is that <span class="offColor">a</span> Word?</a>
-                </h1>
-            </div>            
-            <div id="divCenter"> 
-                <div id="wordDisplayDiv">
+    <body>
+        <div id="container-fluid">
+            {%- include 'banner.html' -%}
+
+                  
+            <div class="row centered"> 
+                <div id="wordDisplayDiv" class="banner">
                     <h1>
-                        <span class="wordDisplayHeading" id="wordDisplayHeading" >Your Word is:</span> <br />
-                        <span class="wordDisplay" id="wordDisplay"> {{ input_str|upper }} </span> 
+                        <p>Your Word is:</p>
+                        <span class="trim"> {{ input_str|upper }} </span> 
                     </h1>
                 </div>
+            </div>          
+
+            <div class="row"> <!-- Scores -->
+                <div id="scores" class="centered">
+                    <div id="scrabbleDiv">
+                        <p>Scrabble Score</p>
+                        <p id="scrabbleScore">0<p>
+                    </div>
+                    <div id="wwfDiv">
+                        <p>Words With <br /> Friends Score</p>
+                        <p id="wwfScore">0<p>                    
+                    </div>
+                </div>
             </div>
-
-
-            <div id="divDBResult" class="divDBResult">
-                <p id="inputError" class="inputError"></p>
-                <p id="DBResult"></p>
-            </div> 
             
-
-            <div id="scores">
-                <table id="scoresTable" class="scoresTable">
-                    <tr id="labelRow">
-                        <td id="ScrabbleLabel"><br />Scrabble Score</td>
-                        <td></td>
-                        <td id="wwfLabel"><span id="wwfScoreSpan">Words With <br /> Friends Score</span></td>
-                    </tr>
-                    <tr>
-                        <td id="scrabbleScore" class="scrabbleScore">0</td>
-                        <td></td>
-                        <td id="wwfScore" class="wwfScore">0</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div id="divDefinitions" >
-            
-            </div><br />
+            <div class="row"> <!-- Definitions -->
+                <div id="divDefinitions" >
+                
+                </div>
+            </div>            
         </div>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/color/jquery.color-2.1.2.js"></script>        
