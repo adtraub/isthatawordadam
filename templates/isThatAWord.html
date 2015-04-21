@@ -22,22 +22,23 @@
                 </h1>
             </div>
             
-            <div class="row centered"> <!-- Search -->
+            <div class="row"> <!-- Search -->
                 <form role="form" onsubmit="submitHandler();return false;">
                     <span class="col-xs-12
                                  col-sm-10">
-                        <input type="text" id="input_str" class="form-control" value="{{input_str}}" onkeyup="updateScores($(this).val().trim());" /> 
+                        <input type="text" id="input_str" class="form-control input-lg" value="{{input_str}}" onkeyup="updateScores($(this).val().trim());" /> 
                     </span>
                     <button type="submit" class="btn btn-warning btn-lg raised smallbtn"  onclick="submitHandler();return false;">GO</button>
                     <button type="submit" class="btn btn-warning btn-lg btn-block raised bigbtn"  onclick="submitHandler();return false;">GO</button>
                 </form>
             </div>
-            
-            <div class="row" hidden> <!-- Direct -->
-                <div class="permaLinkHolder">
-                    <label>Direct Link</label>
-                    <input type="text" id="permalinkAddress" /> <!--<a href="#" id="permaButton">GO</a>-->
-                    <button></button>
+            <div class="row" > <!-- Direct -->
+                <div id="permaDiv" class="centered" hidden>
+                     <span class="col-xs-8
+                                  col-sm-8  col-sm-offset-1">
+                        <input type="text" id="permaDress" readonly="true" class="form-control" />
+                    </span>
+                    <button id="permaButton" class="btn btn-warning">GO</button>
                 </div>                    
             </div>
             
@@ -89,6 +90,24 @@
                 setDefinitions($("#divDefinitions"),"",false); //make sure definitions are empty
             });
             
+            /**
+             * Shows or hides the permalink text
+             *
+             * shouldShow - states whether the permalink should be shown or not
+             * address - the new html address for the permalink page
+             **/
+            function showPermalink(shouldShow, address){
+                if(shouldShow){
+                    $("#permaDress").val(address);
+                    $("#permaButton").click(function(){
+                        window.location.href=address;
+                    })
+                    $("#permaDiv").show();
+                } else {
+                    $("#permaDiv").hide();
+                }
+            }
+            
             //Handles submit action
             function submitHandler(){
                 //valid[0] is validity valid[1] is either the word formatted nicely or error text
@@ -104,7 +123,7 @@
                         } else { //if the data is cached and is in the dictionary
                             $('#dbResult').text(valid[1].concat(" is a word!"));
                             setBackground(successColor,defaultInterval);
-                            //showPermalink(true, localStorage.getItem(valid[1].concat("_permalink")));
+                            showPermalink(true, localStorage.getItem(valid[1].concat("_permalink")));
                             setDefinitions($("#divDefinitions"),localStorage.getItem(valid[1]), true)
                         }                        
                     } else { //if the word is valid and is not cached
@@ -113,7 +132,7 @@
                     }
                 } else { //if it's not a valid word
                     setBackground(defaultColor,defaultInterval);
-                    //showPermalink(false);
+                    showPermalink(false);
                     $('#dbResult').text("");
                     setError(valid[1]);                    
                     setDefinitions($("#divDefinitions"),"", false)
@@ -141,11 +160,11 @@
                             getAndSetDefinitions(input, data['word_id']); //IMMEDIATELY start working on getting the definitions
                             $('#dbResult').text(input.concat(" is a word!"));
                             setBackground(successColor,defaultInterval);
-                            //showPermalink(true,"http://www.isthataword.net/direct/".concat(data['word_id']))
+                            showPermalink(true,"http://www.isthataword.net/direct/".concat(data['word_id']))
                         } else {
                             $('#dbResult').text("In Scrabble and Words with Friends, ".concat(input.concat(" is not a word!")));
                             setDefinitions($("#divDefinitions"),"",false)
-                            //showPermalink(false)
+                            showPermalink(false)
                             setBackground(failColor,defaultInterval);
                             cacheHandler(input,""," ");
                         }

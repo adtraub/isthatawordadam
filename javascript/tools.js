@@ -155,7 +155,7 @@ function cacheHandler(word, wordId, definition){
     cacheData(word, definition); //caches the word and html definition
 }
 
-//for right now, just empty local storage
+//for right now, just empty local storage if there's a problem
 function cacheData(key, value){
     try{
         localStorage.setItem(key,value);

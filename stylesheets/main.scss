@@ -4,9 +4,9 @@ $trim-color: rgba(255, 169, 11, 0.9);
 
 @mixin responsive-standard-text-mixin{
     @media(max-width: $screen-xs-max){ font-size: 15px; }
-    @media(min-width: $screen-sm-min){ font-size: 25px; }  
-    @media(min-width: $screen-md-min){ font-size: 30px; }  
-    @media(min-width: $screen-lg-min){ font-size: 35px; } 
+    @media(min-width: $screen-sm-min){ font-size: 20px; }  
+    @media(min-width: $screen-md-min){ font-size: 25px; }  
+    @media(min-width: $screen-lg-min){ font-size: 30px; } 
 }
 
 
@@ -27,12 +27,12 @@ body {
     @media(max-width: $screen-xs-max){ 
         padding-right: 5%;
         padding-left: 5%; 
-        margin: 1% 5% 1% 5%;
+        margin: 3%;
     }
     @media(min-width: $screen-sm-min){ 
         padding-right: 10%;
         padding-left: 10%;
-        margin: 2% 10% 2% 10%;
+        margin: 2% 10%;
     }  
 	border: solid rgba(255, 255, 255, 0.6);
 }
@@ -57,6 +57,17 @@ body {
 .btn:focus, .btn:active:focus, .btn.active:focus,
 .btn.focus, .btn:active.focus, .btn.active.focus {
     outline: none; /*Removes the button outline in chrome/safari*/
+}
+
+#input_str{
+    background: rgba(255, 255, 255, 0.6);
+    font-size: 1.8em;
+    font-weight: bold;
+    color: black;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    height: auto;
+    line-height: normal;    
 }
 
 .btn-warning.raised {
@@ -90,6 +101,16 @@ body {
     }
 }
 
+/*PermaLink Stuff*/
+.btn{
+    float:left;
+}
+
+#permaDiv{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
 /*Scores*/
 #scores{
     @include responsive-standard-text-mixin;
@@ -106,8 +127,7 @@ body {
 /*Definitions*/
 #divDefinitions{
     font-family: Georgia, serif;
-    @media(max-width: $screen-xs-max){ font-size: 16px; }
-    @media(min-width: $screen-sm-min){ font-size: 25px; } 
+    @include responsive-standard-text-mixin;
     margin-bottom: 2%;
     .entry{
         border: 2px solid;

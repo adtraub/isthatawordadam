@@ -5652,12 +5652,12 @@ body {
     #main {
       padding-right: 5%;
       padding-left: 5%;
-      margin: 1% 5% 1% 5%; } }
+      margin: 3%; } }
   @media (min-width: 768px) {
     #main {
       padding-right: 10%;
       padding-left: 10%;
-      margin: 2% 10% 2% 10%; } }
+      margin: 2% 10%; } }
 
 .trim {
   color: rgba(255, 169, 11, 0.9); }
@@ -5691,6 +5691,16 @@ body {
   outline: none;
   /*Removes the button outline in chrome/safari*/ }
 
+#input_str {
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 1.8em;
+  font-weight: bold;
+  color: black;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  height: auto;
+  line-height: normal; }
+
 .btn-warning.raised {
   box-shadow: 0 3px 0 0 #b87430; }
   .btn-warning.raised:active {
@@ -5718,15 +5728,23 @@ body {
       font-size: 15px; } }
   @media (min-width: 768px) {
     #divDBResult {
-      font-size: 25px; } }
+      font-size: 20px; } }
   @media (min-width: 992px) {
     #divDBResult {
-      font-size: 30px; } }
+      font-size: 25px; } }
   @media (min-width: 1200px) {
     #divDBResult {
-      font-size: 35px; } }
+      font-size: 30px; } }
   #divDBResult .error {
     color: red; }
+
+/*PermaLink Stuff*/
+.btn {
+  float: left; }
+
+#permaDiv {
+  margin-top: 5%;
+  margin-bottom: 5%; }
 
 /*Scores*/
 #scores {
@@ -5736,13 +5754,13 @@ body {
       font-size: 15px; } }
   @media (min-width: 768px) {
     #scores {
-      font-size: 25px; } }
+      font-size: 20px; } }
   @media (min-width: 992px) {
     #scores {
-      font-size: 30px; } }
+      font-size: 25px; } }
   @media (min-width: 1200px) {
     #scores {
-      font-size: 35px; } }
+      font-size: 30px; } }
   #scores #wwfDiv {
     float: right; }
   #scores #scrabbleDiv {
@@ -5754,10 +5772,16 @@ body {
   margin-bottom: 2%; }
   @media (max-width: 767px) {
     #divDefinitions {
-      font-size: 16px; } }
+      font-size: 15px; } }
   @media (min-width: 768px) {
     #divDefinitions {
+      font-size: 20px; } }
+  @media (min-width: 992px) {
+    #divDefinitions {
       font-size: 25px; } }
+  @media (min-width: 1200px) {
+    #divDefinitions {
+      font-size: 30px; } }
   #divDefinitions .entry {
     border: 2px solid;
     padding: 10px 25px 10px 25px; }
