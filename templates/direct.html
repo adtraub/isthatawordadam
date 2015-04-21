@@ -12,18 +12,15 @@
     </head>
     
     <body>
-        <div id="container-fluid">
+        <div id="main" class="container-fluid">
             {%- include 'banner.html' -%}
 
                   
-            <div class="row centered"> 
-                <div id="wordDisplayDiv" class="banner">
-                    <h1>
-                        <p>Your Word is:</p>
-                        <span class="trim"> {{ input_str|upper }} </span> 
-                    </h1>
+            <div id="wordRow" class="row centered"> 
+                <div id="wordDisplayDiv">
+                        <h1 class="trim">{{ input_str|upper }}</h1>
                 </div>
-            </div>          
+            </div>
 
             <div class="row"> <!-- Scores -->
                 <div id="scores" class="centered">

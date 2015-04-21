@@ -5821,9 +5821,23 @@ body {
   -webkit-border-radius: 100px;
   border: 2px solid;
   border-color: white;
-  margin: 0 auto;
   display: inline-block;
-  padding-right: 30px;
-  padding-left: 30px; }
+  padding-right: 5%;
+  padding-left: 5%;
+  margin-bottom: 5%; }
+  #wordDisplayDiv h1 {
+    font-family: 'Nunito', Geneva, sans-serif; }
+    @media (max-width: 767px) {
+      #wordDisplayDiv h1 {
+        font-size: 20px; } }
+    @media (min-width: 768px) {
+      #wordDisplayDiv h1 {
+        font-size: 40px; } }
+    @media (min-width: 992px) {
+      #wordDisplayDiv h1 {
+        font-size: 50px; } }
+    @media (min-width: 1200px) {
+      #wordDisplayDiv h1 {
+        font-size: 60px; } }
 
 /*# sourceMappingURL=main.css.map */

@@ -176,8 +176,15 @@ body {
     -webkit-border-radius: 100px;
     border: 2px solid;
     border-color: white;
-    margin:0 auto;
     display: inline-block;    
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 5%;
+    padding-left: 5%;
+    margin-bottom: 5%;
+    h1{
+        font-family: 'Nunito', Geneva, sans-serif;
+        @media(max-width: $screen-xs-max){ font-size: 20px; }
+        @media(min-width: $screen-sm-min){ font-size: 40px; }  
+        @media(min-width: $screen-md-min){ font-size: 50px; }  
+        @media(min-width: $screen-lg-min){ font-size: 60px; } 
+    }
 }
