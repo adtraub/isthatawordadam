@@ -9,6 +9,7 @@
         <title>Is that A Word? </title>
         {%- if use_css -%}  {#- Cute little function to show what the page looks like without css -#}
             <link rel="stylesheet" type="text/css" href= "/stylesheets/main.css">
+            <link href='http://fonts.googleapis.com/css?family=Nunito:700' rel='stylesheet' type='text/css'>
         {%- endif -%}
     </head>    
     <body>
@@ -23,12 +24,12 @@
             
             <div class="row centered"> <!-- Search -->
                 <form role="form" onsubmit="submitHandler();return false;">
-                    <div class="">
-                        <span class="col-xs-9 col-xs-offset-1">
-                            <input type="text" id="input_str" class="form-control" value="{{input_str}}" onkeyup="updateScores($(this).val().trim());" /> 
-                        </span>
-                        <button type="submit" class="btn btn-warning btn-lg raised"  onclick="submitHandler();return false;">GO</button>
-                    </div>
+                    <span class="col-xs-12
+                                 col-sm-10">
+                        <input type="text" id="input_str" class="form-control" value="{{input_str}}" onkeyup="updateScores($(this).val().trim());" /> 
+                    </span>
+                    <button type="submit" class="btn btn-warning btn-lg raised smallbtn"  onclick="submitHandler();return false;">GO</button>
+                    <button type="submit" class="btn btn-warning btn-lg btn-block raised bigbtn"  onclick="submitHandler();return false;">GO</button>
                 </form>
             </div>
             

@@ -5647,10 +5647,17 @@ body {
   text-align: center; }
 
 #main {
-  margin: 2% 10% 2% 10%;
-  padding-right: 10%;
-  padding-left: 10%;
   border: solid rgba(255, 255, 255, 0.6); }
+  @media (max-width: 767px) {
+    #main {
+      padding-right: 5%;
+      padding-left: 5%;
+      margin: 1% 5% 1% 5%; } }
+  @media (min-width: 768px) {
+    #main {
+      padding-right: 10%;
+      padding-left: 10%;
+      margin: 2% 10% 2% 10%; } }
 
 .trim {
   color: rgba(255, 169, 11, 0.9); }
@@ -5660,19 +5667,19 @@ body {
 .banner:focus, .banner:visited {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
-  font-family: Tahoma, Geneva, sans-serif; }
+  font-family: 'Nunito', Geneva, sans-serif; }
   @media (max-width: 767px) {
     .banner, .banner:hover, .banner:active,
     .banner:focus, .banner:visited {
-      font-size: 30px; } }
+      font-size: 25px; } }
   @media (min-width: 768px) {
     .banner, .banner:hover, .banner:active,
     .banner:focus, .banner:visited {
-      font-size: 40px; } }
+      font-size: 35px; } }
   @media (min-width: 992px) {
     .banner, .banner:hover, .banner:active,
     .banner:focus, .banner:visited {
-      font-size: 60px; } }
+      font-size: 55px; } }
   @media (min-width: 1200px) {
     .banner, .banner:hover, .banner:active,
     .banner:focus, .banner:visited {
@@ -5692,16 +5699,65 @@ body {
     margin-bottom: -3px;
     margin-top: 3px; }
 
-/*Scores*/
-#wwfDiv {
-  float: right; }
+@media (max-width: 767px) {
+  .smallbtn {
+    visibility: hidden;
+    height: 0; } }
 
-#scrabbleDiv {
-  float: left; }
+@media (min-width: 768px) {
+  .bigbtn {
+    visibility: hidden;
+    height: 0; } }
+
+#divDBResult {
+  font-weight: bold;
+  margin-top: 5%;
+  margin-bottom: 5%; }
+  @media (max-width: 767px) {
+    #divDBResult {
+      font-size: 15px; } }
+  @media (min-width: 768px) {
+    #divDBResult {
+      font-size: 25px; } }
+  @media (min-width: 992px) {
+    #divDBResult {
+      font-size: 30px; } }
+  @media (min-width: 1200px) {
+    #divDBResult {
+      font-size: 35px; } }
+  #divDBResult .error {
+    color: red; }
+
+/*Scores*/
+#scores {
+  font-family: 'Nunito', Geneva, sans-serif; }
+  @media (max-width: 767px) {
+    #scores {
+      font-size: 15px; } }
+  @media (min-width: 768px) {
+    #scores {
+      font-size: 25px; } }
+  @media (min-width: 992px) {
+    #scores {
+      font-size: 30px; } }
+  @media (min-width: 1200px) {
+    #scores {
+      font-size: 35px; } }
+  #scores #wwfDiv {
+    float: right; }
+  #scores #scrabbleDiv {
+    float: left; }
 
 /*Definitions*/
 #divDefinitions {
-  font-family: Georgia, serif; }
+  font-family: Georgia, serif;
+  margin-bottom: 2%; }
+  @media (max-width: 767px) {
+    #divDefinitions {
+      font-size: 16px; } }
+  @media (min-width: 768px) {
+    #divDefinitions {
+      font-size: 25px; } }
   #divDefinitions .entry {
     border: 2px solid;
     padding: 10px 25px 10px 25px; }
@@ -5716,10 +5772,16 @@ body {
     /*Only show audio tags if they'll fit on the screen*/ }
     @media (max-width: 540px) {
       #divDefinitions .audio {
-        visibility: hidden; } }
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s linear 0.5s,opacity 0.5s linear;
+        height: 0; } }
     @media (min-width: 540px) {
       #divDefinitions .audio {
-        visibility: visible; } }
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 0s;
+        height: auto; } }
   #divDefinitions .definitionTable {
     padding-left: 3%; }
     #divDefinitions .definitionTable .heading {

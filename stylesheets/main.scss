@@ -2,6 +2,14 @@
 //variables
 $trim-color: rgba(255, 169, 11, 0.9);
 
+@mixin responsive-standard-text-mixin{
+    @media(max-width: $screen-xs-max){ font-size: 15px; }
+    @media(min-width: $screen-sm-min){ font-size: 25px; }  
+    @media(min-width: $screen-md-min){ font-size: 30px; }  
+    @media(min-width: $screen-lg-min){ font-size: 35px; } 
+}
+
+
 /*General stuff*/
 body {
 	color: rgba(255, 255, 255, 0.6);
@@ -16,9 +24,16 @@ body {
 }
 
 #main{
-    margin: 2% 10% 2% 10%;
-	padding-right: 10%;
-	padding-left: 10%;
+    @media(max-width: $screen-xs-max){ 
+        padding-right: 5%;
+        padding-left: 5%; 
+        margin: 1% 5% 1% 5%;
+    }
+    @media(min-width: $screen-sm-min){ 
+        padding-right: 10%;
+        padding-left: 10%;
+        margin: 2% 10% 2% 10%;
+    }  
 	border: solid rgba(255, 255, 255, 0.6);
 }
 
@@ -31,10 +46,10 @@ body {
 .banner:focus, .banner:visited{
     text-decoration: none;
     color: rgba(255, 255, 255, 0.6);
-    font-family: Tahoma, Geneva, sans-serif;
-    @media(max-width: $screen-xs-max){ font-size: 30px; }
-    @media(min-width: $screen-sm-min){ font-size: 40px; }  
-    @media(min-width: $screen-md-min){ font-size: 60px; }  
+    font-family: 'Nunito', Geneva, sans-serif;
+    @media(max-width: $screen-xs-max){ font-size: 25px; }
+    @media(min-width: $screen-sm-min){ font-size: 35px; }  
+    @media(min-width: $screen-md-min){ font-size: 55px; }  
     @media(min-width: $screen-lg-min){ font-size: 80px; } 
 }
 
@@ -54,18 +69,46 @@ body {
     }
 }
 
-/*Scores*/
-#wwfDiv{
-    float:right;
+.smallbtn{
+    @media(max-width: $screen-xs-max){ visibility: hidden; height:0; }
 }
 
-#scrabbleDiv{
-    float:left;
+.bigbtn{
+    @media(min-width: $screen-sm-min){ 
+        visibility: hidden; 
+        height: 0; 
+    }  
+}
+
+#divDBResult{
+    @include responsive-standard-text-mixin;
+    font-weight: bold;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    .error{
+        color: red;
+    }
+}
+
+/*Scores*/
+#scores{
+    @include responsive-standard-text-mixin;
+    font-family: 'Nunito', Geneva, sans-serif;
+    #wwfDiv{
+        float:right;
+    }
+
+    #scrabbleDiv{
+        float:left;
+    }
 }
 
 /*Definitions*/
 #divDefinitions{
     font-family: Georgia, serif;
+    @media(max-width: $screen-xs-max){ font-size: 16px; }
+    @media(min-width: $screen-sm-min){ font-size: 25px; } 
+    margin-bottom: 2%;
     .entry{
         border: 2px solid;
         padding: 10px 25px 10px 25px;
@@ -83,9 +126,15 @@ body {
         /*Only show audio tags if they'll fit on the screen*/
         @media(max-width: 540px){
             visibility: hidden;
+            opacity:0;
+            transition:visibility 0s linear 0.5s,opacity 0.5s linear;
+            height: 0;
         }
         @media(min-width: 540px){
             visibility: visible;
+            opacity:1;
+            transition-delay:0s;
+            height: auto;
         }
     }    
     .definitionTable{
