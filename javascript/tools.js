@@ -197,3 +197,19 @@ function canPlayAudio(){
     return !!(a.canPlayType && a.canPlayType('audio/wav; codecs="1"').replace(/no/, ''));
 }
 
+//Gets the definition for a given word
+function getAndSetDefinitions(input, wordId, outputDiv){   
+    $.ajax({
+        type: 'GET',
+        url: '/define',
+        data: {input_str: input },
+        success: function(data){                       
+            if(data == ""){
+                data = "<div class='inputError'>While ".concat(input).concat(" is a word, we don't have a defintion for it at this time!</div>");
+            } 
+            cacheHandler(input, wordId, data)
+            setDefinitions(outputDiv, data, true);
+        },
+        dataType: 'html'
+    });
+}    

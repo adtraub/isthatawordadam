@@ -157,7 +157,7 @@
                     data: {input_str: input },
                     success: function(data){                        
                         if(data["found"]){
-                            getAndSetDefinitions(input, data['word_id']); //IMMEDIATELY start working on getting the definitions
+                            getAndSetDefinitions(input, data['word_id'], $("#divDefinitions")); //IMMEDIATELY start working on getting the definitions
                             $('#dbResult').text(input.concat(" is a word!"));
                             setBackground(successColor,defaultInterval);
                             showPermalink(true,"http://www.isthataword.net/direct/".concat(data['word_id']))
@@ -173,24 +173,7 @@
                     dataType: 'json'
                 });
             }
-                  
-            //Gets the definition for a given word
-            function getAndSetDefinitions(input, wordId){   
-                $.ajax({
-                    type: 'GET',
-                    url: '/define',
-                    data: {input_str: input },
-                    success: function(data){                       
-                        if(data == ""){
-                            data = "<div class='inputError'>While ".concat(input).concat(" is a word, we don't have a definition for it at this time!</div>");
-                        } 
-                        cacheHandler(input, wordId, data);
-                        setDefinitions($("#divDefinitions"), data, true)
-                    },
-                    dataType: 'html'
-                });
-            }
-            
+
             //update Scrabble and WWF scores
             function updateScores(word){
                 $("#scrabbleScore").text(getScore(word, scrabbleKey));

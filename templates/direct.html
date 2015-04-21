@@ -8,48 +8,6 @@
         {%- if use_css -%} {#- Cute little function to show what the page looks like without css -#}
             <link rel="stylesheet" type="text/css" href= "/stylesheets/main.css">
         {%- endif -%}
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/color/jquery.color-2.1.2.js"></script>        
-        <script type="text/javascript" src="/javascript/tools.js"></script>        
-        <script type="text/javascript" >
-        
-            $( document ).ready(function() {
-                updateScores("{{ input_str }}"); //sets the scores
-                handleVersion( {{ is_up_to_date }} ); 
-                if(dataIsCached("{{ input_str }}")){ //if the data is cached
-                    setDefinitions($("#divDefinitions"), localStorage.getItem("{{ input_str }}"), true);
-                } else {//otherwise
-                    getAndSetDefinition("{{ input_str }}"); //get the definition from Websters API
-                }
-            });
-            
-            
-            //Gets the definition for a given word
-            function getAndSetDefinition(input){   
-                $.ajax({
-                    type: 'GET',
-                    url: '/define',
-                    data: {input_str: input },
-                    success: function(data){                       
-                        if(data == ""){
-                            data = "<div class='inputError'>While ".concat(input).concat(" is a word, we don't have a defintion for it at this time!</div>");
-                        } 
-                        setDefinitions($("#divDefinitions"), data, true);
-                        cacheHandler(input, "{{ word_id }}", data)
-                    },
-                    dataType: 'html'
-                });
-            }            
-            
-            //update Scrabble and WWF scores
-            function updateScores(word){
-                $("#scrabbleScore").text(getScore(word, scrabbleKey));
-                $("#wwfScore").text(getScore(word, wwfKey));
-            }
-            
-
-            
-        </script>
     </head>
     
     <body class="success">
@@ -94,6 +52,27 @@
             
             </div><br />
         </div>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/color/jquery.color-2.1.2.js"></script>        
+        <script type="text/javascript" src="/javascript/tools.js"></script>        
+        <script type="text/javascript" >
+        
+            $( document ).ready(function() {
+                updateScores("{{ input_str }}"); //sets the scores
+                handleVersion( {{ is_up_to_date }} ); 
+                if(dataIsCached("{{ input_str }}")){ //if the data is cached
+                    setDefinitions($("#divDefinitions"), localStorage.getItem("{{ input_str }}"), true);
+                } else {//otherwise
+                    getAndSetDefinitions("{{ input_str }}","{{ word_id }}",$("#divDefinitions")); //get the definition from Websters API
+                }
+            });
+            
+            //update Scrabble and WWF scores
+            function updateScores(word){
+                $("#scrabbleScore").text(getScore(word, scrabbleKey));
+                $("#wwfScore").text(getScore(word, wwfKey));
+            }
+        </script>
         
     </body>
     
