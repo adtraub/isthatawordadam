@@ -213,3 +213,11 @@ function getAndSetDefinitions(input, wordId, outputDiv){
         dataType: 'html'
     });
 }    
+
+
+            
+//update Scrabble and WWF scores
+function updateScores(word, scrabbleText, wwfText){
+    scrabbleText.text(getScore(word, scrabbleKey));
+    wwfText.text(getScore(word, wwfKey));
+}

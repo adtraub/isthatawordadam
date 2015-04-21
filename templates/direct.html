@@ -58,7 +58,7 @@
         <script type="text/javascript" >
         
             $( document ).ready(function() {
-                updateScores("{{ input_str }}"); //sets the scores
+                updateScores("{{ input_str }}", $("#scrabbleScore"), $("#wwfScore")); //sets the scores
                 handleVersion( {{ is_up_to_date }} ); 
                 if(dataIsCached("{{ input_str }}")){ //if the data is cached
                     setDefinitions($("#divDefinitions"), localStorage.getItem("{{ input_str }}"), true);
@@ -66,12 +66,6 @@
                     getAndSetDefinitions("{{ input_str }}","{{ word_id }}",$("#divDefinitions")); //get the definition from Websters API
                 }
             });
-            
-            //update Scrabble and WWF scores
-            function updateScores(word){
-                $("#scrabbleScore").text(getScore(word, scrabbleKey));
-                $("#wwfScore").text(getScore(word, wwfKey));
-            }
         </script>
         
     </body>

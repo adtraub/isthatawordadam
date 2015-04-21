@@ -26,7 +26,8 @@
                 <form role="form" onsubmit="submitHandler();return false;">
                     <span class="col-xs-12
                                  col-sm-10">
-                        <input type="text" id="input_str" class="form-control input-lg" value="{{input_str}}" onkeyup="updateScores($(this).val().trim());" /> 
+                        <input type="text" id="input_str" class="form-control input-lg" value="{{input_str}}" 
+                                onkeyup="updateScores($(this).val().trim(), $('#scrabbleScore'), $('#wwfScore'));" /> 
                     </span>
                     <button type="submit" class="btn btn-warning btn-lg raised smallbtn"  onclick="submitHandler();return false;">GO</button>
                     <button type="submit" class="btn btn-warning btn-lg btn-block raised bigbtn"  onclick="submitHandler();return false;">GO</button>
@@ -84,7 +85,7 @@
             };
             
             $( document ).ready(function() {
-                updateScores($("#input_str").val());
+                updateScores("{{ input_str }}", $("#scrabbleScore"), $("#wwfScore"));
                 //Check to see if the page has updated since the last visit
                 handleVersion( {{ is_up_to_date }} );
                 setDefinitions($("#divDefinitions"),"",false); //make sure definitions are empty
@@ -172,13 +173,7 @@
                     },
                     dataType: 'json'
                 });
-            }
-
-            //update Scrabble and WWF scores
-            function updateScores(word){
-                $("#scrabbleScore").text(getScore(word, scrabbleKey));
-                $("#wwfScore").text(getScore(word, wwfKey));
-            }            
+            }         
             
         </script>
         
