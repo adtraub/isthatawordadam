@@ -9,15 +9,12 @@ from ViewHandler import Handler
 from XMLProcessors import WebsterParser as WP
 import Tools
 
-       
+
 class DefineHandler(Handler):
     """Handles server side calls to The Dictionary"""
-    
+
     def get(self):
-        """Delivers a json object containing the dictionary information for a word"""    
+        """Delivers a json object containing the dictionary information for a word"""
         toDefine = self.request.get("input_str").lower().strip()
-        xml = Tools.getXML(toDefine)
-        response_data = []
-        if xml:
-            response_data = [defs.data for defs in WP(xml)]
+        response_data = Tools.getParsedXML(toDefine, WP)
         self.render("definition.html", **{"master":response_data})
