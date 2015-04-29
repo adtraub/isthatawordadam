@@ -44,7 +44,7 @@ scrabbleKey = {
                 "z":10,
            };
 
-//WWF scores dictionary           
+//WWF scores dictionary
 wwfKey = {
                 "a":1,
                 "b":4,
@@ -73,8 +73,8 @@ wwfKey = {
                 "y":3,
                 "z":10,
            };
-           
-inputRegex = /^[a-z]*$/; //Only a-z Chars!           
+
+inputRegex = /^[a-z]*$/; //Only a-z Chars!
 failColor = "#800080";//dark purple
 successColor = "#376A82";//dull blue/green
 defaultColor = "#000000";//Black
@@ -105,10 +105,10 @@ function usingIE() {
         if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){
             //alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)))); //gets ie version number
             out = true;
-        }else{        
+        }else{
             out = false;
         }
-        return out; */    
+        return out; */
     //single line version, original came from internet, too lazy to dissect it - it works
     return (window.navigator.userAgent.indexOf("MSIE ") > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./));
 }
@@ -116,12 +116,12 @@ function usingIE() {
 
 
 //Sets the background color of the page
-function setBackground(color,interval){            
+function setBackground(color,interval){
   jQuery("body").animate({
       backgroundColor: color
   }, interval );
 }
-            
+
 //clears the page if out of date
 function handleVersion(upToDate){
     if(!upToDate){
@@ -130,7 +130,7 @@ function handleVersion(upToDate){
 }
 
 /**
- * Validates a word and returns a boolean stating if it passed the 
+ * Validates a word and returns a boolean stating if it passed the
  * validation and a string with either the cleaned input or the error text
  **/
 function validateWord(input){
@@ -160,18 +160,18 @@ function cacheData(key, value){
     try{
         localStorage.setItem(key,value);
     } catch(err){
-        localStorage.clear()                
+        localStorage.clear()
     } finally {
-        localStorage.setItem(key,value);                
-    }                
-    return;            
+        localStorage.setItem(key,value);
+    }
+    return;
 }
 
 //checks if data has been cached
 function dataIsCached(input){
     return localStorage.getItem(input) != null;
 }
-            
+
 /**
   * Sets the definitions for the definition div
   *
@@ -182,7 +182,7 @@ function dataIsCached(input){
 function setDefinitions(definitionDiv, data, showingDefinitions){
     definitionDiv.html(data);
     if(!canPlayAudio()){
-        $(".audio").hide();        
+        $(".audio").hide();
     }
     if(showingDefinitions){
         definitionDiv.show();
@@ -198,24 +198,22 @@ function canPlayAudio(){
 }
 
 //Gets the definition for a given word
-function getAndSetDefinitions(input, wordId, outputDiv){   
+function getAndSetDefinitions(input, wordId, outputDiv){
     $.ajax({
         type: 'GET',
         url: '/define',
         data: {input_str: input },
-        success: function(data){                       
+        success: function(data){
             if(data == ""){
                 data = "<div class='inputError'>While ".concat(input).concat(" is a word, we don't have a defintion for it at this time!</div>");
-            } 
+            }
             cacheHandler(input, wordId, data)
             setDefinitions(outputDiv, data, true);
         },
         dataType: 'html'
     });
-}    
+}
 
-
-            
 //update Scrabble and WWF scores
 function updateScores(word, scrabbleText, wwfText){
     scrabbleText.text(getScore(word, scrabbleKey));

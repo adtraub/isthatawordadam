@@ -44,7 +44,7 @@ def getXML(toDefine):
     except URLError:
         return
     #reads the xml into a string and then return an XML tree from that string
-    memcache.add(toDefine,xml,60)
+    memcache.add(toDefine,xml)
     return ET.fromstring(xml)
 
 
