@@ -3,7 +3,7 @@ import webapp2
 import jinja2
 import os
 import datetime
-import logging as logger
+import logging
 import urllib2
 
 from models.Word import Word
@@ -36,7 +36,6 @@ version = "5.1.0"
 def getXML(toDefine):
     """Return an XML tree with all of the information of a word from Websters or None"""
     #get definition in xml format
-    test = memcache.get(toDefine)
     req = urllib2.Request(_dictionaryAPIAddress.format(word=toDefine, key=_dictionaryAPIKey))
     req.add_header('User-agent', 'isThatAWord.net')
     xml = None
@@ -45,13 +44,23 @@ def getXML(toDefine):
     except URLError:
         return
     #reads the xml into a string and then return an XML tree from that string
+    memcache.add(toDefine,xml,60)
     return ET.fromstring(xml)
 
 
 def getParsedXML(toDefine, parser):
     """Returns the parsed xml or an empty list"""
-    xml = getXML(toDefine)
-    response_data = []
+    cached = False
+    data = memcache.get(toDefine)
+    if data is not None:
+        logging.info("data is cached")
+        xml = ET.fromstring(data)
+
+    else:
+        logging.info("data is not cached")
+        response_data = []
+        xml = getXML(toDefine)
+
     if xml:
         response_data = [defs.data for defs in parser(xml)]
     return response_data
