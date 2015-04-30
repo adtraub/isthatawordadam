@@ -9,6 +9,6 @@ import Tools
 
 class PrimeHandler(Handler):
     """Parent Class for homepage"""
-    def get(self): 
-        Tools.addSampleData(["test"])
+    def get(self):
+        Tools.addSampleData(["test","help"])
         self.render("prime.html")

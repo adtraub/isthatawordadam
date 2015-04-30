@@ -4,9 +4,9 @@ $trim-color: rgba(255, 169, 11, 0.9);
 
 @mixin responsive-standard-text-mixin{
     @media(max-width: $screen-xs-max){ font-size: 15px; }
-    @media(min-width: $screen-sm-min){ font-size: 20px; }  
-    @media(min-width: $screen-md-min){ font-size: 25px; }  
-    @media(min-width: $screen-lg-min){ font-size: 30px; } 
+    @media(min-width: $screen-sm-min){ font-size: 20px; }
+    @media(min-width: $screen-md-min){ font-size: 25px; }
+    @media(min-width: $screen-lg-min){ font-size: 30px; }
 }
 
 
@@ -18,22 +18,22 @@ body {
 
 .centered{
      float: none;
-     margin-left: auto;  
+     margin-left: auto;
      margin-right: auto;
      text-align: center;
 }
 
 #main{
-    @media(max-width: $screen-xs-max){ 
+    @media(max-width: $screen-xs-max){
         padding-right: 5%;
-        padding-left: 5%; 
+        padding-left: 5%;
         margin: 3%;
     }
-    @media(min-width: $screen-sm-min){ 
+    @media(min-width: $screen-sm-min){
         padding-right: 10%;
         padding-left: 10%;
         margin: 2% 10%;
-    }  
+    }
 	border: solid rgba(255, 255, 255, 0.6);
 }
 
@@ -42,15 +42,15 @@ body {
 }
 
 /*Banner */
-.banner, .banner:hover, .banner:active, 
+.banner, .banner:hover, .banner:active,
 .banner:focus, .banner:visited{
     text-decoration: none;
     color: rgba(255, 255, 255, 0.6);
     font-family: 'Nunito', Geneva, sans-serif;
     @media(max-width: $screen-xs-max){ font-size: 25px; }
-    @media(min-width: $screen-sm-min){ font-size: 35px; }  
-    @media(min-width: $screen-md-min){ font-size: 55px; }  
-    @media(min-width: $screen-lg-min){ font-size: 80px; } 
+    @media(min-width: $screen-sm-min){ font-size: 35px; }
+    @media(min-width: $screen-md-min){ font-size: 55px; }
+    @media(min-width: $screen-lg-min){ font-size: 80px; }
 }
 
 /*Input*/
@@ -67,7 +67,7 @@ body {
     padding-top: 9px;
     padding-bottom: 9px;
     height: auto;
-    line-height: normal;    
+    line-height: normal;
 }
 
 .btn-warning.raised {
@@ -76,7 +76,7 @@ body {
         background: #eba259;
         box-shadow: none;
         margin-bottom: -3px;
-        margin-top: 3px;    
+        margin-top: 3px;
     }
 }
 
@@ -85,10 +85,10 @@ body {
 }
 
 .bigbtn{
-    @media(min-width: $screen-sm-min){ 
-        visibility: hidden; 
-        height: 0; 
-    }  
+    @media(min-width: $screen-sm-min){
+        visibility: hidden;
+        height: 0;
+    }
 }
 
 #divDBResult{
@@ -137,12 +137,12 @@ body {
         color: rgba(255, 169, 11, 0.9);
         &.transVerb{
             padding-top: 10px;
-            padding-bottom: 10px;    
+            padding-bottom: 10px;
             display: block;
         }
     }
-    .audio{
-        float:right;
+    .player{
+        width:100%;
         /*Only show audio tags if they'll fit on the screen*/
         @media(max-width: 540px){
             visibility: hidden;
@@ -154,9 +154,12 @@ body {
             visibility: visible;
             opacity:1;
             transition-delay:0s;
-            height: auto;
+            height:30px;
         }
-    }    
+        audio{
+            float:right;
+        }
+    }
     .definitionTable{
         padding-left:3%;
         .heading{
@@ -176,15 +179,15 @@ body {
     -webkit-border-radius: 100px;
     border: 2px solid;
     border-color: white;
-    display: inline-block;    
+    display: inline-block;
     padding-right: 5%;
     padding-left: 5%;
     margin-bottom: 5%;
     h1{
         font-family: 'Nunito', Geneva, sans-serif;
         @media(max-width: $screen-xs-max){ font-size: 20px; }
-        @media(min-width: $screen-sm-min){ font-size: 40px; }  
-        @media(min-width: $screen-md-min){ font-size: 50px; }  
-        @media(min-width: $screen-lg-min){ font-size: 60px; } 
+        @media(min-width: $screen-sm-min){ font-size: 40px; }
+        @media(min-width: $screen-md-min){ font-size: 50px; }
+        @media(min-width: $screen-lg-min){ font-size: 60px; }
     }
 }

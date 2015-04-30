@@ -12,17 +12,17 @@ because the code is undeniably straight forward.
         {%- if "partOfSpeech" in subDic.keys() -%}
             <p><label>Part of Speech</label>: {{ subDic['partOfSpeech'] }}</p>
         {%- endif -%}
+        {%- if "pronunciation" in subDic.keys() -%}
+            <p><label>Pronunciation</label>:{{ subDic['pronunciation'] }}</p>
+        {%- endif -%}
         {%- if "sound" in subDic.keys() -%}
-            <span class="audio" >
+            <div class="player" >
                 <audio controls="controls" >
                     <source type="audio/wav" src="http://media.merriam-webster.com/soundc11/{{ subDic['sound'] }}" />
                     Your browser does not support the audio element.
                 </audio>
-            </span>
-        {%- endif -%}        
-        {%- if "pronunciation" in subDic.keys() -%}
-            <p><label>Pronunciation</label>:{{ subDic['pronunciation'] }}</p>
-        {%- endif -%} 
+            </div>
+        {%- endif -%}
         {%- if "etymology" in subDic.keys() -%}
             <p><label>Etymology</label>: {{ subDic['etymology'] }}</p>
         {%- endif -%}
@@ -30,14 +30,14 @@ because the code is undeniably straight forward.
             <p><label>First Used</label>: {{ subDic['date'] }}</p>
         {%- endif -%}
         {%- if "definitions" in subDic.keys() -%}
-            {%- if subDic["definitions"]|length > 1 -%} 
+            {%- if subDic["definitions"]|length > 1 -%}
                 {#- if it's multiline -#}
                 <p><label>Definition</label>:</p>
                 <table class="definitionTable">
-                {%- for def in  subDic["definitions"] -%}         
+                {%- for def in  subDic["definitions"] -%}
                     <tr>
                         <td class="heading primary">{{ def.heading }}</td>
-                        <td class="details"><span class="heading">{{ def.subheading }} </span> 
+                        <td class="details"><span class="heading">{{ def.subheading }} </span>
                             {%- for detail in def.details -%}
                                 {%- if detail.effect == "s" -%}
                                     <span class="heading">{{ detail.text }}</span>
@@ -48,19 +48,19 @@ because the code is undeniably straight forward.
                                 {%- else -%}
                                     {{ detail.text }}
                                 {%- endif -%}
-                            {%- endfor -%}            
+                            {%- endfor -%}
                         </td>
                     </tr>
-                {%- endfor -%}            
+                {%- endfor -%}
                  </table>
             {%- else -%}
                 {#- if it's a single line definition -#}
                 {%- for def in subDic["definitions"] -%}
                     {%- for detail in def.details -%}
                         <p><label>Definition</label>: {{ detail.text }}</p>
-                    {%- endfor -%}  
-                {%- endfor -%}  
-            {%- endif -%}            
+                    {%- endfor -%}
+                {%- endfor -%}
+            {%- endif -%}
         {%- endif -%}
     </div>
 {%- endfor -%}

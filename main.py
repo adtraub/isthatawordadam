@@ -41,5 +41,5 @@ app = webapp2.WSGIApplication([
     ('/nocss/direct/([0-9]+)',CSSFreeDirectLinkHandler),
     ('/wordnotfound',WordNotFoundHandler),
     ('/nocss/wordnotfound',CSSFreeWordNotFoundHandler),
-    #('/primedatastore',PrimeHandler),
+    #('/prime',PrimeHandler),
 ], debug=True)
