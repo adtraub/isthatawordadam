@@ -12,18 +12,26 @@ handlers:
 - url: /remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin
-  
+
 - url: /stylesheets
   static_dir: stylesheets
-  
+
 - url: /javascript
   static_dir: javascript
 
 - url: .*
   script: main.app
-  
+
 builtins:
 - remote_api: on
+
+skip_files: |
+    ^(.*/)?(
+    (.*\.pyc)|
+    (.*\.css.map)|
+    (.*\.scss)|
+    (.sass-cache/.*)|
+    )$
 
 libraries:
 - name: webapp2
