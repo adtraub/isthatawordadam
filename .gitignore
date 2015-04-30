@@ -56,5 +56,8 @@ docs/_build/
 # PyBuilder
 target/
 
+#Sass
+**/.sasscache/**
+
 #Secret Stuff
 secret.py
